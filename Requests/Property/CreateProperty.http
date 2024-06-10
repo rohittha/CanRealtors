@@ -1,0 +1,15 @@
+
+POST https://localhost:7283/property/createproperty
+Content-Type: application/json
+
+# {
+#     "Description" : "3 BHK Condo"
+#     ,"Type" : "Residential"
+#     ,"Address" : "102 Heaven St."
+#     ,"Address2" : ""
+#     ,"City" : "Calgary"
+#     ,"Region" : "Alberta"
+#     ,"PostalCode" : "A989B3"
+#     ,"Country" : "Canada"
+#     ,"Phone" : "9876543214"
+# }

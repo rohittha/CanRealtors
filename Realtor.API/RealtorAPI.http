@@ -1,0 +1,21 @@
+@Realtor.API_HostAddress = https://localhost:5128
+
+GET {{Realtor.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{Realtor.API_HostAddress}}/property/getproperties
+Accept: application/json
+
+{
+    "Description" : "2 BHK Condo"
+    ,"Type" : "Residential"
+    ,"Address" : "101 Heaven St."
+    ,"Address2" : ""
+    ,"City" : "Calgary"
+    ,"Region" : "Alberta"
+    ,"PostalCode" : "A989B3"
+    ,"Country" : "Canada"
+    ,"Phone" : "9876543213"
+}
