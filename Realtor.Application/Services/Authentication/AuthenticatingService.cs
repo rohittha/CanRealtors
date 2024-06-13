@@ -13,11 +13,11 @@ using System.Threading.Tasks;
 
 namespace Realtor.Application.Services.Authentication
 {
-    public class AuthencatingService : IAuthenticatingService
+    public class AuthenticatingService : IAuthenticatingService
     {
         private readonly IUserRepository _userRepository;
         private readonly IJwtTokenGenerator _jwtTokenGenerator;
-        public AuthencatingService( IJwtTokenGenerator jwtTokenGenerator, IUserRepository userRepository) 
+        public AuthenticatingService( IJwtTokenGenerator jwtTokenGenerator, IUserRepository userRepository) 
         {
             _jwtTokenGenerator = jwtTokenGenerator;
             _userRepository = userRepository;
