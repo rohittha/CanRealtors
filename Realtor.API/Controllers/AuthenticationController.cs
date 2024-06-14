@@ -1,62 +1,53 @@
 ﻿
 using ErrorOr;
+using MapsterMapper;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Realtor.Application.Services.Authentication;
+using Realtor.Application.Authentication.Commands.Register;
+using Realtor.Application.Authentication.Common;
+using Realtor.Application.Authentication.Queries.Login;
 using Realtor.Contracts.Authentication;
-using System.Reflection.Metadata.Ecma335;
 
 namespace Realtor.API.Controllers
 {
     [Route("auth")]
     public class AuthenticationController : ApiController
     {
-        private IAuthenticatingService _authenticationService;
-        public AuthenticationController(IAuthenticatingService authenticationService)
+        private readonly IMediator _mediatr;
+        private readonly IMapper _mapper;
+        public AuthenticationController(IMediator mediatr, IMapper mapper)
         {
-            _authenticationService = authenticationService;
+            _mediatr = mediatr;
+            _mapper = mapper;
         }
+        //private IAuthenticatingCommandService _authCommandService;
+        //private IAuthenticatingQueryService _authQueryService;
+        //public AuthenticationController(IAuthenticatingCommandService authCommandService, IAuthenticatingQueryService authQueryService)
+        //{
+        //    _authCommandService = authCommandService;
+        //    _authQueryService = authQueryService;
+        //}
 
         [HttpPost("register")]
-        public IActionResult Register(RegisterRequest request)
+        public async Task<IActionResult> Register(RegisterRequest request)
         {
-            ErrorOr<AuthenticationResult> authResult = _authenticationService.Register(
-                request.FirstName,
-                request.LastName,
-                request.Email,
-                request.Password
-                );
+            var command = _mapper.Map<RegisterCommand>(request);
+            ErrorOr<AuthenticationResult> authResult = await _mediatr.Send(command);
 
-
-            return authResult.Match(authResult => Ok(NewMethod(authResult)),
+            return authResult.Match(authResult => Ok(_mapper.Map<AuthenticationResponse>(authResult)),
                 errors => Problem(errors));
-
-            //return Ok(authResult);
-        }
-
-        static AuthenticationResponse NewMethod(ErrorOr<AuthenticationResult> authResult)
-        {
-            return new AuthenticationResponse(
-                authResult.Value.User.Id,
-                authResult.Value.User.FirstName,
-                authResult.Value.User.LastName,
-                authResult.Value.User.Email,
-                authResult.Value.Token
-                );
         }
 
 
         [HttpPost("login")]
-        public IActionResult Login(LoginRequest request)
+        public async Task<IActionResult> Login(LoginRequest request)
         {
-            var authResult = _authenticationService.Login(
-                request.Email,
-                request.Password
-                );
+            var query = _mapper.Map<LoginQuery>(request);
+            var authResult = await _mediatr.Send(query);
 
-            //return Ok(response);
-
-            return authResult.Match(authResult => Ok(NewMethod(authResult)),
+            var result = authResult.Match(authResult => Ok(_mapper.Map<AuthenticationResponse>(authResult)),
                 errors => Problem(errors));
+            return result;
         }
     }
 }

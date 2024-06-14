@@ -1,14 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
-using Realtor.API.Services;
-using Realtor.API.Repository;
-using System.Runtime.CompilerServices;
-using Realtor.API.Data;
-using Microsoft.EntityFrameworkCore;
-using Realtor.Application.Services.Authentication;
-//using Realtor.API.Middleware;
+﻿//using Realtor.API.Middleware;
 //using Realtor.API.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Realtor.API.Common.Errors;
+using Realtor.API.Common.Mapping;
+using Realtor.API.Repository;
+using Realtor.API.Services;
 
 namespace Realtor.API
 {
@@ -18,6 +14,7 @@ namespace Realtor.API
         {
             //services.AddControllers(options=> options.Filters.Add<ErrorHandlingFilterAttribute>());
             services.AddControllers();
+            services.AddMappings();
             services.AddSingleton<ProblemDetailsFactory, RealtorsProblemDetailsFactory>();
             services.AddScoped<IPropertyRepository, PropertyRepository>();
             services.AddEndpointsApiExplorer();

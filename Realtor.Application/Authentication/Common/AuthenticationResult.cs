@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Realtor.Application.Services.Authentication
+namespace Realtor.Application.Authentication.Common
 {
     public record AuthenticationResult(
         User User,

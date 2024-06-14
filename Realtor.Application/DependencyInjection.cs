@@ -1,6 +1,6 @@
 
 using Microsoft.Extensions.DependencyInjection;
-using Realtor.Application.Services.Authentication;
+using System.Reflection;
 
 namespace Realtor.API.Application
 {
@@ -8,7 +8,8 @@ namespace Realtor.API.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            services.AddScoped<IAuthenticatingService,AuthencatingService>();
+            //services.AddMediatR(typeof(DependencyInjection).Assembly);
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
             return services;
         }
     }
