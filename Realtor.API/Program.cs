@@ -3,7 +3,8 @@ using Realtor.API;
 using Realtor.API.Data;
 using Realtor.API.Repository;
 using Realtor.API.Services;
-using Realtor.API.Application;
+using Realtor.Application;
+using Realtor.Infrastructure;
 //using Realtor.API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);

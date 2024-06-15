@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Realtor.Application.Common.Interfaces.Persistence;
 using Realtor.Infrastructure.Persistence;
 
-namespace Realtor.API.Application
+namespace Realtor.Infrastructure
 {
     public static class DependencyInjection
     {

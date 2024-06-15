@@ -2,9 +2,9 @@
 //using Realtor.API.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Realtor.API.Common.Errors;
-using Realtor.API.Common.Mapping;
 using Realtor.API.Repository;
 using Realtor.API.Services;
+using Realtor.Common.Mapping;
 
 namespace Realtor.API
 {

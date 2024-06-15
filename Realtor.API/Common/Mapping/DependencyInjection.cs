@@ -3,7 +3,7 @@ using MapsterMapper;
 using Microsoft.Identity.Client;
 using System.Reflection;
 
-namespace Realtor.API.Common.Mapping
+namespace Realtor.Common.Mapping
 {
     public static class DependencyInjection
     {
