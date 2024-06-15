@@ -1,0 +1,19 @@
+@host=https://localhost:7283
+
+GET {{host}}/properties/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5NGVlMmE5Zi0zODhkLTRjYzUtYjk4My0zYmZkMThiYjRkYjAiLCJnaXZlbl9uYW1lIjoiVG9tIiwiZmFtaWx5X25hbWUiOiJGZWx0b24iLCJqdGkiOiI5OWM2NmY5MC04MGZjLTQ5ZDktOGIxYy0zYTkwZTBlZWRhNjEiLCJleHAiOjE3MTg0NjQxNTYsImlzcyI6IlJlYWx0b3JUZXN0MSIsImF1ZCI6IlJlYWx0b3JUZXN0MV9Vc2VycyJ9.kHUThDBkKXnGxdBY7VXWibaMvXgmT_vwXqFJxTFTNfg
+
+# Content-Type: application/json
+
+# {
+#   "id": 5,
+#   "description": "3 BHK Condo",
+#   "type": "Residential",
+#   "address": "102 Heaven St.",
+#   "address2": "",
+#   "city": "Calgary",
+#   "region": "Alberta",
+#   "postalCode": "A989B3",
+#   "country": "Canada",
+#   "phone": "9876543214"
+# }

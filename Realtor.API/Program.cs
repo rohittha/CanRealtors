@@ -31,7 +31,8 @@ var app = builder.Build();
 //app.UseMiddleware<ErrorHandlingMiddleware>(); // To use Error Handling custo middleware
 app.UseExceptionHandler("/error");
 app.UseHttpsRedirection();
-//app.UseAuthorization();
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();

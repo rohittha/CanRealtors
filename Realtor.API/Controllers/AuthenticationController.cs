@@ -2,6 +2,7 @@
 using ErrorOr;
 using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Realtor.Application.Authentication.Commands.Register;
 using Realtor.Application.Authentication.Common;
@@ -11,6 +12,7 @@ using Realtor.Contracts.Authentication;
 namespace Realtor.API.Controllers
 {
     [Route("auth")]
+    [AllowAnonymous]
     public class AuthenticationController : ApiController
     {
         private readonly IMediator _mediatr;
@@ -20,13 +22,6 @@ namespace Realtor.API.Controllers
             _mediatr = mediatr;
             _mapper = mapper;
         }
-        //private IAuthenticatingCommandService _authCommandService;
-        //private IAuthenticatingQueryService _authQueryService;
-        //public AuthenticationController(IAuthenticatingCommandService authCommandService, IAuthenticatingQueryService authQueryService)
-        //{
-        //    _authCommandService = authCommandService;
-        //    _authQueryService = authQueryService;
-        //}
 
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterRequest request)
